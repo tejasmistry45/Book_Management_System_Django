@@ -1,0 +1,70 @@
+{% extends 'books/base.html' %}
+
+{% block title %}{{ title }} - BookStore{% endblock %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label class="form-label">Title</label>
+                {{ form.title }}
+                {% if form.title.errors %}
+                    <div class="text-danger">{{ form.title.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Author</label>
+                {{ form.author }}
+                {% if form.author.errors %}
+                    <div class="text-danger">{{ form.author.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label class="form-label">ISBN</label>
+                {{ form.isbn }}
+                {% if form.isbn.errors %}
+                    <div class="text-danger">{{ form.isbn.errors }}</div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label class="form-label">Publication Date</label>
+                {{ form.publication_date }}
+                {% if form.publication_date.errors %}
+                    <div class="text-danger">{{ form.publication_date.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Pages</label>
+                {{ form.pages }}
+                {% if form.pages.errors %}
+                    <div class="text-danger">{{ form.pages.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Price</label>
+                {{ form.price }}
+                {% if form.price.errors %}
+                    <div class="text-danger">{{ form.price.errors }}</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Description</label>
+        {{ form.description }}
+        {% if form.description.errors %}
+            <div class="text-danger">{{ form.description.errors }}</div>
+        {% endif %}
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-success">Save Book</button>
+        <a href="{% url 'book_list' %}" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+{% endblock %}
