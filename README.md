@@ -96,6 +96,24 @@ pip install django
 
 ### Step 4: Database Setup
 ```bash
+# Create project
+django-admin startproject bookstore
+cd bookstore
+
+# Create app
+python manage.py startapp books
+
+Edit bookstore/settings.py to add your app:
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'books',  # Add your app here
+]
+
 # Apply migrations
 python manage.py makemigrations
 python manage.py migrate
